@@ -14,7 +14,7 @@ router.get('/', function(req, res, next) {
 router.get('/loadArticles',function (req, res, next) {
     Article
         .find()
-        .limit(3)
+        .limit(Number(req.query.num))
         .skip(req.query.currentPage*req.query.num)
         .exec(function (err, docs){
             if(err){
